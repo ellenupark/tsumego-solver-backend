@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  size: 1
+  board: MyString
+  answer: MyString
+  move: MyString
+  player: MyString
+  attempts: 1
+  solved: 1
+
+two:
+  size: 1
+  board: MyString
+  answer: MyString
+  move: MyString
+  player: MyString
+  attempts: 1
+  solved: 1
