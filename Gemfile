@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
-gem 'active_model_serializers'
 gem 'rack-cors'
 gem 'fast_jsonapi'
 

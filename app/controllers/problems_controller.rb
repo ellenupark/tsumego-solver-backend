@@ -1,9 +1,14 @@
 class ProblemsController < ApplicationController
-    before_action :set_problem, only: [:show, :update, :destroy]
+    before_action :set_problem, only: [:show, :update]
 
     def index
         problems = Problem.all
         render json: ProblemSerializer.new(problems)
+    end
+
+    def show
+        problem = Problem.find_by_id(params[:id])
+        render json: ProblemSerializer.new(problem)
     end
 
     def create
@@ -17,10 +22,11 @@ class ProblemsController < ApplicationController
     end
     
     def update
+        problem = Problem.find_by_id(params[:id])
         if problem.update(problem_params)
-          render json: ProblemSerializer.new(problem)
+            render json: ProblemSerializer.new(problem)
         else
-          render json: {errors: problem.errors.full_messages.to_sentence}
+            render json: {errors: problem.errors.full_messages.to_sentence}
         end
     end
 
