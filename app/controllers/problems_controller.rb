@@ -1,25 +1,26 @@
 class ProblemsController < ApplicationController
+    before_action :set_problem, only: [:show, :update, :destroy]
+
     def index
         problems = Problem.all
         render json: ProblemSerializer.new(problems)
     end
 
     def create
-        problem = Problem.new(pet_params)
+        problem = Problem.new(problem_params)
     
-        if @pet.save
-          render json: @pet, status: :created, location: @pet
+        if problem.save
+          render json: ProblemSerializer.new(problem)
         else
-          render json: @pet.errors, status: :unprocessable_entity
+            render json: {errors: problem.errors.full_messages.to_sentence}
         end
     end
     
-      # PATCH/PUT /pets/1
     def update
-        if @pet.update(pet_params)
-          render json: @pet
+        if problem.update(problem_params)
+          render json: ProblemSerializer.new(problem)
         else
-          render json: @pet.errors, status: :unprocessable_entity
+          render json: {errors: problem.errors.full_messages.to_sentence}
         end
     end
 
