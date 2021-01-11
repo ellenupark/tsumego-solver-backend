@@ -37,6 +37,6 @@ class ProblemsController < ApplicationController
       end
   
       def problem_params
-        params.require(:problem).permit(:board_size, :board, :answer, :move, :player, :attempts, :solved)
+        params.require(:problem).permit(:board_size, :user_made, :board, :answer, :move, :player, :attempts, :solved)
       end
 end
