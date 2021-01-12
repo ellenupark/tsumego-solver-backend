@@ -9,7 +9,7 @@
 
 ## Description
 
-<!-- <img src="./images/learnhwatuimage.png" width="600"> -->
+<img src="./public/tsumego-solver.png" width="600">
 
 Improve your Go knowledge by completing Life & Death practice problems. 
 Create your own or browse through user created problems.
