@@ -22,7 +22,6 @@ class ProblemsController < ApplicationController
     end
     
     def update
-        problem = Problem.find_by_id(params[:id])
         if problem.update(problem_params)
             render json: ProblemSerializer.new(problem)
         else
