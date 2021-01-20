@@ -1,5 +1,5 @@
 class ProblemsController < ApplicationController
-    before_action :set_problem, only: [:show, :update]
+    before_action :set_problem, only: [:show]
 
     def index
         problems = Problem.all
@@ -22,6 +22,8 @@ class ProblemsController < ApplicationController
     end
     
     def update
+        problem = Problem.find_by_id(params[:id])
+
         if problem.update(problem_params)
             render json: ProblemSerializer.new(problem)
         else
@@ -32,7 +34,7 @@ class ProblemsController < ApplicationController
     
     private
       def set_problem
-        problem = Problem.find(params[:id])
+        problem = Problem.find_by_id(params[:id])
       end
   
       def problem_params
