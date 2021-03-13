@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2021_03_13_044429) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "user_made"
     t.string "prompt"
-    t.jsonb "board", default: [], array: true
-    t.jsonb "answer", default: [], array: true
+    t.integer "board", default: [], array: true
+    t.integer "answer", default: [], array: true
   end
 
 end

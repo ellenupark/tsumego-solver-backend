@@ -15,7 +15,7 @@ class ProblemsController < ApplicationController
         problem = Problem.new(problem_params)
     
         if problem.save
-          render json: ProblemSerializer.new(problem)
+            render json: ProblemSerializer.new(problem)
         else
             render json: {errors: problem.errors.full_messages.to_sentence}
         end
@@ -38,6 +38,11 @@ class ProblemsController < ApplicationController
       end
   
       def problem_params
-        params.require(:problem).permit(:board_size, :prompt, :user_made, :board, :answer, :move, :player, :attempts, :solved)
+        params.require(:problem).permit(:board_size, :prompt, :user_made, :move, :player, :attempts, :solved, :board, :answer).tap do |whitelisted|
+            whitelisted[:board] = params[:problem][:board]
+            whitelisted[:answer] = params[:problem][:answer]
+
+        end
+        # params.require(:problem).permit(:board_size, :prompt, :user_made, :move, :player, :attempts, :solved, board: [], answer: [])
       end
 end
