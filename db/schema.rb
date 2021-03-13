@@ -10,15 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_200944) do
+ActiveRecord::Schema.define(version: 2021_03_13_044429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "problems", force: :cascade do |t|
     t.integer "board_size"
-    t.string "board"
-    t.string "answer"
     t.string "move"
     t.string "player"
     t.integer "attempts"
@@ -27,6 +25,8 @@ ActiveRecord::Schema.define(version: 2021_01_11_200944) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "user_made"
     t.string "prompt"
+    t.integer "board", default: [], array: true
+    t.integer "answer", default: [], array: true
   end
 
 end
